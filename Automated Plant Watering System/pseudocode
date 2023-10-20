@@ -1,0 +1,45 @@
+# Pseudocode for the Watering System using Arduino MKR IoT Carrier
+
+# Import necessary libraries and declare global variables
+Include "thingProperties.h"
+Include Arduino_MKRIoTCarrier.h
+Create an instance of MKRIoTCarrier named 'carrier'
+Declare an integer 'moistPin' and a string 'waterPumpState'
+
+# Setup function
+Setup:
+    Initialize serial communication at 9600 baud
+    Wait for 1.5 seconds
+    Initialize IoT Cloud properties defined in thingProperties.h
+    Connect to Arduino IoT Cloud using preferred connection
+    Set the debug message level to 2
+    Print debug information
+    Wait until a connection to the Cloud is established
+    Initialize the MKRIoTCarrier
+    Set the display rotation
+    Wait for 1.5 seconds
+
+# Loop function
+Loop:
+    Continuously update the Arduino IoT Cloud
+    Read the raw moisture value from analog pin A6
+    Map the raw moisture value to a scale of 0 - 100
+
+# Function to handle water pump state change
+Function onWaterpumpChange:
+    If 'waterpump' is true:
+        Open the water pump relay using the carrier
+        Set 'waterPumpState' to "PUMP: ON"
+    Else:
+        Close the water pump relay using the carrier
+        Set 'waterPumpState' to "PUMP: OFF"
+    Call the 'updateScreen' function
+
+# Function to update the displayed information on the MKRIoTCarrier screen
+Function updateScreen:
+    Clear the screen and set the background color to black
+    Set the text color to white
+    Set the text size to 3
+    Set the cursor position on the screen
+    Print the 'waterPumpState'
+
