@@ -1,0 +1,69 @@
+# Watering System with Arduino MKR IoT Carrier
+
+This project demonstrates a water irrigation system using an Arduino MKR IoT Carrier. The system connects to the Arduino IoT Cloud, reads moisture levels from a sensor, and controls a water pump based on the moisture data.
+
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Hardware Setup](#hardware-setup)
+- [Software Setup](#software-setup)
+- [Usage](#usage)
+- [Code Explanation](#code-explanation)
+- [License](#license)
+
+## Prerequisites
+
+Before using this code, make sure you have the following:
+
+- An Arduino MKR IoT Carrier board.
+- Arduino IDE installed on your computer.
+- An active Arduino IoT Cloud account.
+
+## Hardware Setup
+
+1. Connect a moisture sensor to analog pin A6.
+2. Connect a water pump to the relay output on the MKR IoT Carrier.
+3. Ensure the MKR IoT Carrier is properly connected to the Arduino board.
+
+## Software Setup
+
+1. Install the required libraries.
+2. Create a new device on the Arduino IoT Cloud.
+3. Modify `thingProperties.h` to match your IoT Cloud properties.
+4. Upload the code to your Arduino board.
+
+## Usage
+
+1. After uploading the code to your Arduino board, it will connect to the Arduino IoT Cloud.
+2. The code continuously reads moisture levels and controls the water pump based on the Cloud input.
+3. The water pump's state is displayed on the MKR IoT Carrier's screen.
+
+## Code Explanation
+
+- `moistPin`: Defines the analog pin for reading moisture levels.
+- `waterPumpState`: Stores the state of the water pump.
+
+The `setup()` function:
+
+- Initializes serial communication.
+- Sets up the IoT Cloud connection.
+- Initializes the MKR IoT Carrier.
+
+The `loop()` function:
+
+- Continuously updates the IoT Cloud and reads moisture levels.
+
+The `onWaterpumpChange()` function:
+
+- Controls the water pump state based on IoT Cloud input.
+- Updates the `waterPumpState` variable.
+
+The `updateScreen()` function:
+
+- Updates the information displayed on the MKR IoT Carrier's screen.
+
+## License
+
+This code is provided under the [MIT License](LICENSE).
+
+Feel free to modify the README to provide more specific information about your project or any additional details.
